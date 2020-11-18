@@ -1,0 +1,28 @@
+name: Docker Image Build
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+
+  build:
+    env:
+      dockertag: colmap-paperspace:$(date +%s)
+      name: colmap-paperspace
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build docker/ --tag ${{env.dockertag}}
+    
+    - name: Save docker image
+      run: docker save -o ${{env.name}}.dock ${{env.dockertag}}
+    
+    - name: Upload image artifact
+      uses: actions/upload-artifact@v2.2.1
+      with:
+        name: container-build
+        path: ${{env.name}}.dock
