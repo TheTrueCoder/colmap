@@ -36,6 +36,9 @@ RUN cd ceres-solver && \
 
 # Build and install COLMAP
 
+#Install JupyterLab
+RUN apt-get install -y python3 python3-pip
+RUN pip3 install jupyterlab
 # Note: This Dockerfile has been tested using COLMAP pre-release 3.6.
 # Later versions of COLMAP (which will be automatically cloned as default) may
 # have problems using the environment described thus far. If you encounter
@@ -50,3 +53,5 @@ RUN cd colmap && \
 	cmake .. && \
 	make -j4 && \
 	make install
+
+CMD [ "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root" ]
