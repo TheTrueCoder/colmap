@@ -1,5 +1,8 @@
 COLMAP
 ======
+Paperspace Fork
+-
+The aim of this colmap fork is to make a docker image to easily run colmap on Paperspace
 
 About
 -----
