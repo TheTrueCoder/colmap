@@ -54,4 +54,6 @@ RUN cd colmap && \
 	make -j4 && \
 	make install
 
-CMD [ "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root" ]
+RUN apt-get install -y nginx
+
+CMD [ "nginx" ]
