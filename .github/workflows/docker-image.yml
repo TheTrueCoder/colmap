@@ -8,7 +8,7 @@ jobs:
 
   build:
     env:
-      dockertag: colmap-paperspace:$(date +%s)
+      dockertag: colmap-paperspace
       name: colmap-paperspace
 
     runs-on: ubuntu-latest
